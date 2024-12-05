@@ -110,6 +110,13 @@ Attempt build. Things that can go wrong:
 bazel build --xcode_version=16.1 -c opt --cxxopt="-O3" --cxxopt="-march=native" --cxxopt="-std=c++17" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" release:build_pip_package
 ```
 
+### Step 8
+Package build into wheel, to be installed locally and install into this venv. 
+```shell
+bazel-bin/release/build_pip_package /tmp/tfquantum/
+python3 -m pip install /tmp/tfquantum/$(ls /tmp/tfquantum)
+```
+
 ## Final state
 You can test whether the installation worked with the following command:
 ```shell

@@ -56,3 +56,7 @@ cp ../.tfq/lib/python3.10/site-packages/tensorflow/libtensorflow_framework.2.dyl
 # - Many other unknowable things if you're unlucky. I suggest phind.com to debug any errors if you can't reach me.
 echo "\n\n[Step 7] Build Tensorflow Quantum.\n"
 bazel build --xcode_version=16.1 -c opt --cxxopt="-O3" --cxxopt="-march=native" --cxxopt="-std=c++17" --cxxopt="-D_GLIBCXX_USE_CXX11_ABI=1" release:build_pip_package
+
+# Package build into wheel, to be installed locally and install into this venv.
+bazel-bin/release/build_pip_package /tmp/tfquantum/
+python3 -m pip install /tmp/tfquantum/$(ls /tmp/tfquantum)
